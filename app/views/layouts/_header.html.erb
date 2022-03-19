@@ -77,7 +77,10 @@
         </ul>
         <ul class="navbar-nav ml-auto pt-3 pr-5">
         <%= search_form_for @search, url: items_path do |f| %>
-          <%= f.text_field :name_cont,class: 'form-control',placeholder: 'Search' %>
+        <div class="input-group">
+          <%= f.text_field :name_cont,class: 'form-control input-group-prepend',placeholder: 'Search' %>
+          <%= f.submit class:'fas fa-search' %>
+        </div>
         <% end %>
         </ul>
       </div>
