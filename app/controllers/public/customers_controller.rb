@@ -1,10 +1,12 @@
 class Public::CustomersController < ApplicationController
-  before_action :authenticate_customers!, except: [:top, :about]
+before_action :authenticate_customer!, except: [:top, :about]
 
   def show
+    @customer = Customer.find(params[:id])
   end
 
   def edit
+    @customer = Customer.find(params[:id])
   end
 
   def unsubscribe
@@ -21,4 +23,7 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :post_code, :address, :telephone_number, :email, :is_deleted)
   end
+
+
+
 end
