@@ -1,3 +1,4 @@
+# coding: utf-8
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -8,6 +9,7 @@
 
 
 
+<<<<<<< HEAD
 Genre.create!(name:"ケーキ")
 Genre.create!(name:"焼き菓子")
 Genre.create!(name:"プリン")
@@ -24,7 +26,13 @@ Item.create!(genre_id:4,name:"バナナのキャンディ",introduction:"最高�
 
 
 
+=======
+>>>>>>> 5a3a43b24c9675b5f6d876c58d67bf5c843bbb91
 Admin.create!(
     email: 'admin@admin.com',
     password: '123456',
 )
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5a3a43b24c9675b5f6d876c58d67bf5c843bbb91
