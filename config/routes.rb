@@ -16,11 +16,16 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get 'about'=>"homes#about"
+    delete 'cart_items/destroy_all'
+    post 'orders/confilm'
+    get 'orders/complete'
+    get 'customers/unsubscribe'
+    patch 'customers/withdraw'
     resources :addresses,only:[:new,:index,:edit,:create,:destroy,:update]
-    resources :cart_items,only:[:index,:create,:destroy,:destroy_all,:update]
-    resources :orders,only:[:new,:show,:index,:create,:confilm,:complete]
+    resources :cart_items,only:[:index,:create,:destroy,:update]
+    resources :orders,only:[:new,:show,:index,:create]
     resources :items,only:[:show,:index]
-    resources :customers,only:[:show,:edit,:unsubscribe,:withdraw,:update]
+    resources :customers,only:[:show,:edit,:update]
   end
 
   namespace :admin do
