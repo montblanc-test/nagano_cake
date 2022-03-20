@@ -12,4 +12,5 @@ class Item < ApplicationRecord
     end
       item_image
   end
+
 end

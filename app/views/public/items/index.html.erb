@@ -1,19 +1,21 @@
-<div class="col-md-3 col-sm-3 col-xs-3">
-　<p>ジャンル検索機能</p>
-</div>
 <div class="container">
-<div class="col-md-9 col-sm-9 col-xs-9">
-  <p>商品一覧</p>
-  <div class="col-md-6 col-sm-6 col-xs-6">
-    <% @items.each do|item| %>
-    <div>
-      <p><%= image_tag item.get_item_image %></p>
-      <p>商品名；<%= item.name %></p>
-      <p>価格：<%= item.price %></p>
-    <div>
-    <% end %>
-  </div>
+    <div class="row">
+      <div class="col-md-3 col-sm-3 col-xs-3">
+      　<p>ジャンル検索機能</p>
+      </div>
+      <div class="col-md-9 col-sm-9 col-xs-9">
+        <div class="row">
+          <p>商品一覧</p>
+          <% @items.each do|item| %>
+          <div class="col-md-3 col-sm-3 col-xs-3">
+            <p><%= image_tag item.get_item_image %></p>
+            <p>商品名；<%= item.name %></p>
+            <p>価格：<%= item.price %></p>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <%= paginate @items %>
+    </div>
 </div>
-</div>
-<%= paginate @items %>
 
