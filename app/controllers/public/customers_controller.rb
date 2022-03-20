@@ -1,5 +1,9 @@
 class Public::CustomersController < ApplicationController
+
   def show
+    @customer = Customer.find(params[:id])
+    @customer_name = Customer.select('family_name','first_name')
+    @customer_name_kana = Customer.select('family_name_kana','first_name_kana')
   end
 
   def edit
@@ -13,4 +17,8 @@ class Public::CustomersController < ApplicationController
 
   def update
   end
+
+
+
+
 end
