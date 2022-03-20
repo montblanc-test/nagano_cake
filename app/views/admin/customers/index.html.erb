@@ -18,10 +18,12 @@
         <% @customers.each do |customer| %>
           <tr>
             <td><% customer.id %></td>
-            <td><% customer.family_name %><% customer.first_name %></td>
+            <%= link_to admin_customer_path(customer.id) do %>
+              <td><% customer.family_name %><% customer.first_name %></td>
+            <% end %>
             <td><% customer.address %></td>
             <td>
-              <% if customer %>
+              <% if customer.is_deleted? %>
                 <span class="label label-success">有効</span>
               <% else %>
                 <span class="label label-secondary">退会</span>
@@ -31,6 +33,8 @@
         <% end %>
       </tbody>
     </table>
-      <%= paginate @cutomer_pages %>
+    <div class="">
+      <%= paginate @customers %>
+    </div>
   </div>
 </div>
