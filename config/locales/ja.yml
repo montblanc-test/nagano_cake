@@ -1,0 +1,6 @@
+ja:
+  enums:
+    order:
+      customer_status:
+        withdrawal: "退会"
+        valid: "有効"
