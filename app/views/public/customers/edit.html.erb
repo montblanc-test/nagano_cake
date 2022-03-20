@@ -1,2 +1,67 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h3 class="p-3"><span class="header">会員情報編集</span></h3>
+  </div>
+
+  <%= form_with model: @customer do |f| %>
+
+    <form>
+      <div class="form-group row">
+        <%= f.label :氏名, class:"col-sm-3 col-form-label" %>
+          <div class="col-md-3">
+           <%= f.text_field :family_name, autofocus: true, autocomplete: "name", class:"form-control" %>
+          </div>
+
+          <div class="col-md-3">
+           <%= f.text_field :first_name, autocomplete: "name",  class:"form-control" %>
+          </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :フリガナ, class:"col-sm-3 col-form-label" %>
+         <div class="col-md-3">
+          <%= f.text_field :family_name_kana, autocomplete: "name", class:"form-control" %>
+         </div>
+         <div class="col-md-3">
+          <%= f.text_field :first_name_kana, autocomplete: "name", class:"form-control" %>
+         </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :郵便番号, class:"col-sm-3 col-form-label" %>
+        <div class="col-md-3">
+         <%= f.text_field :post_code, autocomplete: "post_code", class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :住所, class:"col-sm-3 col-form-label" %>
+        <div class="col-md-6">
+         <%= f.text_field :address, autocomplete: "address", class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :電話番号, class:"col-sm-3 col-form-label" %>
+        <div class="col-md-3">
+         <%= f.text_field :telephone_number, autocomplete: "telephone_number", class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :メールアドレス, class:"col-sm-3 col-form-label" %>
+        <div class="col-md-3">
+         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+        </div>
+      </div>
+
+      <div class="form-goup row">
+        <div class="col-md-4">
+          <%= f.submit "編集内容を保存", class:"btn btn-success btn-block btn-sm" %>
+        </div>
+        <div class="col-md-4">
+          <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-sm btn-danger" %>
+        </div>
+      </div>
+    </form>
+  <% end %>
