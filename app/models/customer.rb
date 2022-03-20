@@ -7,4 +7,5 @@ class Customer < ApplicationRecord
   has_many:cart_items, dependent: :destroy
   has_many:orders, dependent: :destroy
   has_many:addresses, dependent: :destroy
+  enum customer_status: {withdrawal: 0,valid: 1}
 end
