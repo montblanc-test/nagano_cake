@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  before_action :authenticate_end_user!, except: [:top, :about]
+  before_action :authenticate_user!, except: [:top, :about]
 
   def show
   end
