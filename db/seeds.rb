@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
 Genre.create!(id:1,name:"ケーキ")
 Genre.create!(id:2,name:"焼き菓子")
 Genre.create!(id:3,name:"プリン")
@@ -22,3 +23,8 @@ Item.create!(id:7,genre_id:4,name:"いちごのキャンディ",introduction:"�
 Item.create!(id:8,genre_id:4,name:"バナナのキャンディ",introduction:"最高級のバナナを用いたキャンディです。",is_status:1,price:200,)
 
 
+
+Admin.create!(
+    email: 'admin@admin.com',
+    password: '123456',
+)

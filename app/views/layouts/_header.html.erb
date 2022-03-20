@@ -1,0 +1,88 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+      <%= link_to root_path do %>
+        <a href="/" class="navbar-brand text-dark font-italic">Nagano cake</a>
+      <% end %>
+      <div class ="collapse navbar-collapse flex-column">
+        <ul class="navbar-nav ml-auto pr-5">
+          <% if customer_signed_in? %>
+            <li class="nav-item">
+              <%= link_to customer_path(current_customer) do %>
+                <button type="button" class="btn btn-outline-dark mr-5">マイページ</button>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to items_path do %>
+                <button type="button" class="btn btn-outline-dark mr-5">商品一覧</button>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to cart_items_path do %>
+                <button type="button" class="btn btn-outline-dark mr-5">カート</button>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_customer_session_path, method: :delete do %>
+                <button type="button" class="btn btn-outline-dark mr-5">ログアウト</button>
+              <% end %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to admin_items_path do %>
+                <button type="button" class="btn btn-outline-dark mr-5">商品一覧</button>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to admin_customers_path do %>
+                <button type="button" class="btn btn-outline-dark mr-5">会員一覧</button>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to admin_root_path do %>
+                <button type="button" class="btn btn-outline-dark mr-5">注文履歴一覧</button>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to admin_genres_path do %>
+                <button type="button" class="btn btn-outline-dark mr-5">ジャンル一覧</button>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_admin_session_path, method: :delete do %>
+                <button type="button" class="btn btn-outline-dark mr-5">ログアウト</button>
+              <% end %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to about_path do %>
+                <button type="button" class="btn btn-outline-dark mr-5">About</button>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to items_path do %>
+                <button type="button" class="btn btn-outline-dark mr-5">商品一覧</button>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_customer_registration_path do %>
+                <button type="button" class="btn btn-outline-dark mr-5">新規登録</button>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_customer_session_path do %>
+                <button type="button" class="btn btn-outline-dark">ログイン</button>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+        <ul class="navbar-nav ml-auto pt-3 pr-5">
+        <%= search_form_for @search, url: items_path do |f| %>
+        <div class="input-group">
+          <%= f.text_field :name_cont,class: 'form-control input-group-prepend',placeholder: 'Search' %>
+          <%= f.submit class:'fas fa-search' %>
+        </div>
+        <% end %>
+        </ul>
+      </div>
+  </nav>
+</header>
