@@ -16,6 +16,9 @@ before_action :authenticate_customer!, except: [:top, :about]
   end
 
   def update
+    customer = Customer.find(params[:id])
+    customer.update(customer_params)
+    redirect_to customer_path(current_customer.id)
   end
 
   private
