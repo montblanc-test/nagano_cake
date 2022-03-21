@@ -6,7 +6,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order = Order
+    @orders = Order.all
+    
   end
 
   def confilm
