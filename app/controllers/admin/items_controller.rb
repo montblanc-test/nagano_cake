@@ -6,6 +6,10 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
+    
+  end
+
+  def edit
   end
 
   def create
