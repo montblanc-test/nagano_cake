@@ -15,7 +15,7 @@ class Public::AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
-    @address.customer_id = current_customer
+    @address.customer_id = current_customer.id
     if @address.save
       redirect_to addresses_path(current_customer)
       flash[:notice]='You have created address successfully.'
@@ -32,6 +32,9 @@ class Public::AddressesController < ApplicationController
   end
 
   def update
+    address = Address.find(params[:id])
+    address.update(address_params)
+    redirect_to addresses_path
   end
 
   private
