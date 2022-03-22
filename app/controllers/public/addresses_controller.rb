@@ -17,7 +17,7 @@ class Public::AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
     if @address.save
-      redirect_to address_path(current_customer)
+      redirect_to addresses_path(current_customer)
       flash[:notice]='You have created address successfully.'
     else
       @addresses = Address.all

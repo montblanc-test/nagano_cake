@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <h4 class="p-3"><span class="header">注文情報確認</span></h4>
+  </div>
+</div>
+
+ <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="table-light"><h5 class=p-2>商品名</h5></th>
+            <th class="table-light"><h5 class=p-2>単価(税込)</h5></th>
+            <th class="table-light"><h5 class=p-2>数量</h5></th>
+            <th class="table-light"><h5 class=p-2>小計</h5></th>
+          </tr>
+        </thead>
+        <% @cart_items.each do |cart| %>
+        <tbody>
+          <tr>
+            <td><%= @cart_items.name %></td>
+            <td><%#= (@cart_items.price)*1.1).floor %></td>
+            <td><%#= cart_item.quantity %></td>
+            <td><%#= (@cart_item.price*cart.quantity).to_s(:delimited) %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="col-md-3">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <td class="table-light"><h5 class=p-2>送料</h5></td>
+            <td><%#= order.shipping_cost %></td>
+          </tr>
+          <tr></tr>
+            <td class="table-light"><h5 class=p-2>商品合計</h5></td>
+            <td><%#= order.total %></td>
+          </tr>
+          <tr>
+            <td class="table-light"><h5 class=p-2>請求金額</h5></td>
+            <td><%#= order.total_payment %></td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+       <h5><span class="header">支払い方法</span></h5>
+        <div class="col">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+       <h5><span class="header">お届け先</span></h5>
+        <div class="col">
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <%= link_to "注文を確定する", orders_complete_path, method: :post, class: "btn btn-success" %>
+      </div>
+    </div>
+</div>
