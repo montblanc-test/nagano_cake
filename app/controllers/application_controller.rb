@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
    if current_admin
       admin_orders_path
    elsif current_customer
-         customer_session_path
+        root_path
    end
   end
 
