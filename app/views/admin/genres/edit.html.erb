@@ -1,2 +1,14 @@
-<h1>Admin::Genres#edit</h1>
-<p>Find me in app/views/admin/genres/edit.html.erb</p>
+<div class="container pt-5 px-sm-0">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <h3>ジャンル編集</h3>
+    </div>
+    <form class ="form-inline">
+      <div>ジャンル名</div>
+        <%= form_with model: @genre,url:admin_genre_path do |f| %>
+          <div><%= f.text_field :name, autocomplete: "name", class:"form-control",placeholder: '商品名' %></div>
+          <div><%= f.submit '   　変更を保存　   ', class: "btn btn-lg btn-success" %></div>
+        <% end %>
+    </form>
+  </div>
+</div>
