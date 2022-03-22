@@ -1,2 +1,42 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+    <div class="row mt-5 ">
+      <div class="col-2">
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th class="text-center">ジャンル検索</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @genres.each do |genre|  %>
+              <tr>
+                <td><%= link_to genre.name, items_path(sort:"#{genre.name}") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class = "col-10">
+        <div class = "row">
+          <div class ="col-4">
+            <%= image_tag @item.get_item_image(300, 300) %>
+          </div>
+          <div class = "col-6">
+            <div class="text-center"><%= @item.name %></div>
+            <div class="text-center"><%= @item.introduction %></div>
+            <div class="text-center">¥<%= ((@item.price)*1.1).floor%>円(税込)</div>
+            <div class="text-center">
+                <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+                <%=  f.hidden_field :customer_id ,value: @customer.id %>
+                <%=  f.hidden_field :item_id ,value: @item.id %>
+                <div class="text-center mt-3 mb-3">数量を選択してください。</div>
+                <%= f.select :quantity, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10","10"]],include_blank: "選択して下さい" %>
+                <%= f.submit 'カートに入れる',class: "btn btn-success"%>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
