@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     post 'orders/confilm'
     get 'orders/complete'
     get 'customers/unsubscribe'
-    patch 'customers/withdraw'
+    patch 'customers/withdraw/:id', to:'customers#withdraw', as:"customers/withdraw"
     resources :addresses,only:[:new,:index,:edit,:create,:destroy,:update]
     resources :cart_items,only:[:index,:create,:destroy,:update]
     resources :orders,only:[:new,:show,:index,:create]
