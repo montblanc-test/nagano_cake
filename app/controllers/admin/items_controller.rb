@@ -4,6 +4,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def index
@@ -23,12 +24,18 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
+    @item = Item.find(params[:id])
+    if @item.save
+      redirect_to admin_item_path(@item), notice: "商品が編集されました"
+    else
+      render "edit"
+    end
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:name,:price,:is_status,:image)
+    params.require(:item).permit(:name,:price,:is_status,:image,:introduction,:genre_id)
   end
 
 end
