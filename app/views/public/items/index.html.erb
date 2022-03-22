@@ -17,18 +17,17 @@
         </table>
       </div>
       <div class="col-10">
-        <th class="text-center">商品検索</th>
+        <h3>商品検索</h3>
           <div class="row">
             <% @items.each do|item| %>
             <div class="col-3">
-              <p><%= image_tag item.get_item_image(100,200) %></p>
-              <p><%= item.name %></p>
+              <p><%= image_tag item.get_item_image(150,150)%></p>
+              <p><%= link_to item.name,item_path(item) %></p>
               <p>¥<%= item.price %></p>
             </div>
             <% end %>
           </div>
+          <%= paginate @items %>
       </div>
-      <%= paginate @items %>
     </div>
 </div>
-
