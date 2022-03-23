@@ -11,4 +11,9 @@ def subtotal
     item.with_tax_price*quantity
 end
 
+
+  def sum_price
+  item.with_tax_price*quantity
+  end
+
 end
