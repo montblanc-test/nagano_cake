@@ -10,7 +10,7 @@ class Public::CartItemsController < ApplicationController
      if current_customer.cart_items.exists?(item_id: cart_item.item_id)                                                         #もし、cart_itemのitem_idが、客のカート内のcart_itemsテーブル内に存在していたら
         add_items = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])                                  #客のcart_itemsテーブル内から、特定の[:cart_item][:item_id]であるものを選んで add_itemsという名前で保存
         add_items.quantity += params[:cart_item][:quantity].to_i                                                                # add_itemsのquantity
-        add_items.saveg
+        add_items.save
         redirect_to  cart_items_path
      else
        cart_item = CartItem.new(cart_params)
