@@ -16,19 +16,21 @@ class Public::OrdersController < ApplicationController
   def confilm
     @order = Order.new(order_params)
     # binding.pry
-    if params[:order][:payment_method] == "0"
-      @payment_method = "クレジットカード"
-    else
-      @payment_method = "銀行振込"
+    if params[:order][:payment_method] == "credit_card"
+      # if
+        @order.payment_method = "クレジットカード"
+      else
+        @order.payment_method = "銀行振込"
     end
-
+    #binding.pry
     if params[:order][:address_number] == "1"
       @order.name = current_customer.full_name
       @order.address = current_customer.address_display
     elsif params[:order][:address_number] == "2"
-      if Address.exists?(name: params[:order][:address_id])
-        @address= Address.find(params[:order][:address_id])
-        @order.address = @address.address_display
+      if Address.exists?(id: params[:order][:address_id])
+        @address= Address.find_by(params[:order][:address_id])
+        @order.address = @address.address
+        @order.post_code = @address.post_code
         @order.name = @address.name
       else
          render :new
@@ -36,7 +38,8 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:address_number] == "3"
       address_new = current_customer.addresses.new(address_params)
       if address_new.save
-        @order.address = address_new.address_display
+        @order.address = address_new.address
+        @order.post_code = address_new.post_code
         @order.name = address_new.name
       else
         render :new
@@ -78,6 +81,6 @@ class Public::OrdersController < ApplicationController
     end
 
     def address_params
-      params.require(:order).permit(:name, :address, :post_code)
+      params.require(:address).permit(:name, :address, :post_code)
     end
 end

@@ -39,7 +39,7 @@
     </div>
     <br>
 
-    <form>
+
       <div class="row">
         <%= f.radio_button :address_number, 3 %>
         <%= f.label :address_number_3, "新しいお届け先" %>
@@ -48,21 +48,24 @@
       <div class="form-group row">
         <%= f.label :post_code, "郵便番号（ハイフンなし）", class:"col-sm-3 col-form-label" %>
         <div class="col-md-6">
-          <%= f.text_field :post_code, placeholder: "0000000", class:"form-control"  %>
+          <%#= f.text_field :post_code, placeholder: "0000000", class:"form-control"  %>
+          <%= text_field_tag 'address[post_code]' %>
         </div>
       </div>
 
       <div class="form-group row">
         <%= f.label :address, "住所", class:"col-sm-3 col-form-label" %>
         <div class="col-md-6">
-          <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class:"form-control"  %>
+          <%#= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class:"form-control"  %>
+          <%= text_field_tag 'address[address]' %>
         </div>
       </div>
 
       <div class="form-group row">
         <%= f.label :address_name, "宛名", class:"col-sm-3 col-form-label"  %>
         <div class="col-md-6">
-          <%= f.text_field :address_name, placeholder: "令和道子", class:"form-control" %>
+          <%#= f.text_field :address_name, placeholder: "令和道子", class:"form-control" %>
+          <%= text_field_tag 'address[name]' %>
         </div>
       </div>
 
@@ -72,6 +75,5 @@
           <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
         </div>
       </div>
-    </form>
   <% end %>
 </div>

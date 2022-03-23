@@ -5,48 +5,76 @@
 </div>
 
 <div class="container">
-  <div class="col-md-6">
-    <h5 class="p-3">注文情報</h5>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <td class="table-light"><h5 class=p-2>注文日</h5></td>
-            <td></td>
-          </tr>
-          <tr></tr>
-            <td class="table-light"><h5 class=p-2>配送先</h5></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="table-light"><h5 class=p-2>支払い方法</h5></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td class="table-light"><h5 class=p-2>ステータス</h5></td>
-            <td></td>
-          </tr>
-        </thead>
-      </table>
+  <div class="row">
+    <div class="col-md-7">
+      <h5 class="p-3">注文情報</h5>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td class="table-light"><h5 class=p-2>注文日</h5></td>
+              <td><%#= order.created_at %></td>
+            </tr>
+            <tr></tr>
+              <td class="table-light"><h5 class=p-2>配送先</h5></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="table-light"><h5 class=p-2>支払い方法</h5></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="table-light"><h5 class=p-2>ステータス</h5></td>
+              <td></td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+    <div class="col-md-5">
+      <h5 class="p-3">請求情報</h5>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td class="table-light"><h5 class=p-2>商品合計</h5></td>
+              <td></td>
+            </tr>
+            <tr></tr>
+              <td class="table-light"><h5 class=p-2>配送料</h5></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="table-light"><h5 class=p-2>ご請求金額</h5></td>
+              <td></td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <h5 class="p-3">注文内容</h5>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="table-light"><h5 class=p-2>商品</h5></th>
+              <th class="table-light">単価（税込）</th>
+              <th class="table-light">個数</th>
+              <th class="table-light">小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
-  <div class="container"
-      <div class="col-md-3">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <td class="table-light"><h5 class=p-2>送料</h5></td>
-            <td><%= @shipping_cost %></td>
-          </tr>
-          <tr></tr>
-            <td class="table-light"><h5 class=p-2>商品合計</h5></td>
-            <td><%#= @total.to_s(:delimited) %></td>
-          </tr>
-          <tr>
-            <td class="table-light"><h5 class=p-2>請求金額</h5></td>
-            <td><%#= total_payment.to_s %></td>
-          </tr>
-        </thead>
-      </table>
-    </div>
-  </div>
