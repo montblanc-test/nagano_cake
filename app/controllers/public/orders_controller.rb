@@ -16,25 +16,28 @@ class Public::OrdersController < ApplicationController
   def confilm
     @order = Order.new(order_params)
     # binding.pry
-    # if params{:order][:payment_method.key:(0)]
-    #   @payment_method = "クレジットカード"
-    # else
-    #   @payment_method = "銀行振込"
-    # end
+    if params[:order][:payment_method] == "0"
+      @payment_method = "クレジットカード"
+    else
+      @payment_method = "銀行振込"
+    end
 
     if params[:order][:address_number] == "1"
       @order.name = current_customer.full_name
       @order.address = current_customer.address_display
     elsif params[:order][:address_number] == "2"
       if Address.exists?(name: params[:order][:address_id])
-        @order.name = Address.find(params[:order][:address_id]).name
-        @order.address = Address.find(params[:order][:address_id]).address_display
+        @address= Address.find(params[:order][:address_id])
+        @order.address = @address.address_display
+        @order.name = @address.name
       else
          render :new
       end
     elsif params[:order][:address_number] == "3"
       address_new = current_customer.addresses.new(address_params)
       if address_new.save
+        @order.address = address_new.address_display
+        @order.name = address_new.name
       else
         render :new
       end
