@@ -28,13 +28,13 @@ class Public::AddressesController < ApplicationController
   def destroy
     @address = Address.find(params[:id])
     @address.destroy
-    redirect_to addresses_path
+    redirect_to addresses_path(current_customer)
   end
 
   def update
     address = Address.find(params[:id])
     address.update(address_params)
-    redirect_to addresses_path
+    redirect_to addresses_path(current_customer)
   end
 
   private
