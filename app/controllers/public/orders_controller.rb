@@ -14,17 +14,23 @@ class Public::OrdersController < ApplicationController
 
 
   def confilm
-    @shipping_cost = "800"
     @order = Order.new(order_params)
+    # binding.pry
+    # if params{:order][:payment_method.key:(0)]
+    #   @payment_method = "クレジットカード"
+    # else
+    #   @payment_method = "銀行振込"
+    # end
+
     if params[:order][:address_number] == "1"
-      # @order.name = current_customer.full_name
-      # @order.address = current_customer.customer_address
+      @order.name = current_customer.full_name
+      @order.address = current_customer.address_display
     elsif params[:order][:address_number] == "2"
-      if Address.exists?(name: params[:order][:registered])
-        @order.name = Address.find(params[:order][:registered]).name
-        @order.address = Address.find(params[:order][:registered]).address
+      if Address.exists?(name: params[:order][:address_id])
+        @order.name = Address.find(params[:order][:address_id]).name
+        @order.address = Address.find(params[:order][:address_id]).address_display
       else
-        render :new
+         render :new
       end
     elsif params[:order][:address_number] == "3"
       address_new = current_customer.addresses.new(address_params)
@@ -32,13 +38,11 @@ class Public::OrdersController < ApplicationController
       else
         render :new
       end
-    elsif
-      redirect_to orders_path
     end
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum,item| sum + item.sum_price }
-
-end
+    @shipping_cost = "800"
+  end
 
   def complete
   end
@@ -71,6 +75,6 @@ end
     end
 
     def address_params
-      params.require(:order).permit(:name, :address)
+      params.require(:order).permit(:name, :address, :post_code)
     end
 end

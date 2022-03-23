@@ -34,7 +34,8 @@
     </div>
 
     <div class="row-md-8">
-      <%= f.collection_select(:registered, current_customer.addresses.all, :id, :address) %>
+      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+      <%#= f.collection_select(:registered, current_customer.addresses.all, :id, :address) %>
     </div>
     <br>
 
