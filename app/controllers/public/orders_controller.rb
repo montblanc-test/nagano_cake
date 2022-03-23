@@ -18,14 +18,14 @@ class Public::OrdersController < ApplicationController
     # binding.pry
     if params[:order][:payment_method] == "credit_card"
       # if
-        @order.payment_method = "クレジットカード"
+        @order.payment_method = "credit_card"
       else
         @order.payment_method = "銀行振込"
     end
     #binding.pry
     if params[:order][:address_number] == "1"
       @order.name = current_customer.full_name
-      @order.address = current_customer.address_display
+      @order.address = current_customer.address
     elsif params[:order][:address_number] == "2"
       if Address.exists?(id: params[:order][:address_id])
         @address= Address.find_by(params[:order][:address_id])
