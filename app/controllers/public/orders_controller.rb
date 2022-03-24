@@ -11,19 +11,18 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @order_items = OrderItem.all
   end
 
 
   def confilm
     @order = Order.new(order_params)
-    #binding.
     if params[:order][:payment_method] == "credit_card"
-      # if
-        @order.payment_method = "credit_card"
+      @order.payment_method = "credit_card"
     else
-        @order.payment_method = "transfer"
+      @order.payment_method = "transfer"
     end
-    #binding.pry
+
     if params[:order][:address_number] == "1"
       @order.name = current_customer.full_name
       @order.address = current_customer.address
@@ -48,7 +47,8 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum,item| sum + item.sum_price }
-    @shipping_cost = "800"
+    @shipping_cost = 800
+    @order.total_payment = @total + @shipping_cost
   end
 
   def complete
@@ -59,6 +59,7 @@ class Public::OrdersController < ApplicationController
     cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
     @order.shipping_cost = 800
+    @order.order_status = "waiting_deposit"
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum,item| sum + item.sum_price }
     @order.total_payment = (@total+ @order.shipping_cost)
