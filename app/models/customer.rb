@@ -21,8 +21,5 @@ class Customer < ApplicationRecord
     self.family_name + " " + self.first_name
   end
 
-  def address_display
-  '〒' + post_code + ' ' + address 
-  end
 
 end

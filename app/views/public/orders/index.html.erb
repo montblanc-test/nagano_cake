@@ -3,8 +3,8 @@
     <h4 class="p-3"><span class="header">注文履歴一覧</span></h4>
   </div>
 
-  <div class="row">
-    <div class="col">
+  <div class="row-md-10">
+    <div class="col-md-10">
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -19,11 +19,18 @@
         <% @orders.each do |order| %>
           <tbody>
             <tr>
-              <td><%= order.created_at %></td>
-              <td></td>
-              <td></td>
+              <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+              <td><%= order.post_code %><br>
+                  <%= order.address %><br>
+                  <%= order.name %>
+              </td>
+              <td>
+                <% @order_items.each do |order_item| %>
+                  <%= order_item.item.name %>
+                <% end %>
+              </td>
               <td><%= order.total_payment %></td>
-              <td><%#= f.select :order_status, Order.order_statuses_i18n.waiting_deposit, {prompt: false}, class:"form-control form-control-sm col-6"  %></td>
+              <td><%= order.order_status_i18n %></td>
               <td><%= link_to "表示する",  order_path(order.id), class: "btn btn-sm btn-primary" %></td>
             </tr>
           </tbody>
@@ -32,4 +39,3 @@
     </div>
   </div>
 </div>
-
