@@ -9,7 +9,6 @@ class Item < ApplicationRecord
   validates :name, presence:true
   validates :introduction, presence:true
   validates :price, presence:true
-  validates :is_status, presence:true
 
 
   def get_item_image(width, height)
@@ -23,6 +22,5 @@ class Item < ApplicationRecord
   def with_tax_price
     (price*1.1).floor
   end
-
 
 end

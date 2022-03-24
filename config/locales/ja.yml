@@ -18,3 +18,9 @@ ja:
         wait: "製作待ち"
         make: "製作中"
         finish: "製作完了"
+
+    # item:
+    #   is_status:
+    #     impossible: "売り切れ"
+    #     possible: "販売中"
+
