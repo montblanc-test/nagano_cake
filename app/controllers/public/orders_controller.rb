@@ -2,11 +2,12 @@ class Public::OrdersController < ApplicationController
   #注文情報入力画面で、宛先や住所を入力する
   def new
     @order = Order.new
-    # binding.pry
   end
 
-  # def show
-  # end
+  def show
+    @order = Order.find(params[:id])
+    @order_item = OrderItem.find_by(params[:order_id])
+  end
 
   def index
     @orders = Order.all
@@ -15,12 +16,12 @@ class Public::OrdersController < ApplicationController
 
   def confilm
     @order = Order.new(order_params)
-    # binding.pry
+    #binding.
     if params[:order][:payment_method] == "credit_card"
       # if
         @order.payment_method = "credit_card"
-      else
-        @order.payment_method = "銀行振込"
+    else
+        @order.payment_method = "transfer"
     end
     #binding.pry
     if params[:order][:address_number] == "1"
@@ -57,6 +58,11 @@ class Public::OrdersController < ApplicationController
   def create
     cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
+    @order.shipping_cost = 800
+    @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum,item| sum + item.sum_price }
+    @order.total_payment = (@total+ @order.shipping_cost)
+
     if @order.save
       cart_items.each do |cart|
         order_item = OrderItem.new
