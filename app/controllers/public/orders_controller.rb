@@ -26,7 +26,7 @@ class Public::OrdersController < ApplicationController
       @order.address = current_customer.address
     elsif params[:order][:address_number] == "2"
       if Address.exists?(id: params[:order][:address_id])
-        @address= Address.find_by(params[:order][:address_id])
+        @address= Address.find(params[:order][:address_id])
         @order.address = @address.address
         @order.post_code = @address.post_code
         @order.name = @address.name
