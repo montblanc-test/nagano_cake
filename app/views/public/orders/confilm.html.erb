@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h4 class="p-3"><span class="header">注文情報確認</span></h4>
+    <h4 class="p-3"><span class="col-md-3 bg-light text-center m-4">注文情報確認</span></h4>
   </div>
 </div>
 
@@ -19,9 +19,9 @@
         <% @cart_items.each do |cart| %>
         <tbody>
           <tr>
-            <td><%= cart.item.name %></td>
+            <td><%= image_tag cart.item.get_item_image(50,50) %><%= cart.item.name %></td>
             <td><%= (cart.item.price*1.1).floor.to_s(:delimited) %></td>
-            <td><%= cart.quantity  %></td>
+            <td><%= cart.quantity %></td>
             <td><%= (cart.item.price*cart.quantity*1.1).floor.to_s(:delimited)%></td>
           </tr>
         </tbody>

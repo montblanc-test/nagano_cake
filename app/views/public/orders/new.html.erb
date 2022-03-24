@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <h4 class="p-3"><span class="header">注文情報入力</span></h4>
+    <h4 class="p-3"><span class="col-md-3 bg-light text-center m-4">注文情報入力</span></h4>
   </div>
 
 
 <%= form_with model: @order, url: orders_confilm_path, local: true do |f| %>
 
   <div class="row">
-    <h5><span class="header">支払い方法</span></h5>
+    <h6><strong class="header">支払方法</strong></h6>
       <div class="col">
         <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
@@ -18,7 +18,7 @@
   </div>
 
     <div class="row">
-      <h5><span class="header">お届け先</span></h5>
+      <h6><strong class="header">お届け先</strong></h6>
     </div>
 
     <div class="row">
@@ -49,7 +49,7 @@
         <%= f.label :post_code, "郵便番号（ハイフンなし）", class:"col-sm-3 col-form-label" %>
         <div class="col-md-6">
           <%#= f.text_field :post_code, placeholder: "0000000", class:"form-control"  %>
-          <%= text_field_tag 'address[post_code]' %>
+          <%= text_field_tag 'address[post_code]',  '' ,:placeholder => "0000000"  %>
         </div>
       </div>
 
@@ -57,7 +57,7 @@
         <%= f.label :address, "住所", class:"col-sm-3 col-form-label" %>
         <div class="col-md-6">
           <%#= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class:"form-control"  %>
-          <%= text_field_tag 'address[address]' %>
+          <%= text_field_tag 'address[address]',  '' ,:placeholder => "東京都渋谷区代々木神園町0-0" ,:size => '70'   %>
         </div>
       </div>
 
@@ -65,7 +65,7 @@
         <%= f.label :address_name, "宛名", class:"col-sm-3 col-form-label"  %>
         <div class="col-md-6">
           <%#= f.text_field :address_name, placeholder: "令和道子", class:"form-control" %>
-          <%= text_field_tag 'address[name]'%>
+          <%= text_field_tag 'address[name]',  '' ,:placeholder => "令和道子" %>
         </div>
       </div>
 
