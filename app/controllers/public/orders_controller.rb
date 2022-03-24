@@ -8,8 +8,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
-    @order_items = OrderItem.all
+    @orders = current_customer.orders.all
   end
 
 
@@ -17,8 +16,10 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     if params[:order][:payment_method] == "credit_card"
       @order.payment_method = "credit_card"
-    else
+    elsif params[:order][:payment_method] == "transfer"
       @order.payment_method = "transfer"
+    else
+      render :new
     end
 
     if params[:order][:address_number] == "1"
@@ -26,7 +27,7 @@ class Public::OrdersController < ApplicationController
       @order.address = current_customer.address
     elsif params[:order][:address_number] == "2"
       if Address.exists?(id: params[:order][:address_id])
-        @address= Address.find_by(params[:order][:address_id])
+        @address= Address.find(params[:order][:address_id])
         @order.address = @address.address
         @order.post_code = @address.post_code
         @order.name = @address.name
