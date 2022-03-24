@@ -23,12 +23,12 @@ class Item < ApplicationRecord
   def with_tax_price
     (price*1.1).floor.round.to_s(:delimited)
   end
-  
+
   def with_price
     (price).floor.round.to_s(:delimited)
   end
-  
+
   enum is_status: {closed: false, sale: true}
-  
+
 end
 
