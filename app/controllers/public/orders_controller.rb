@@ -5,12 +5,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    # @order_item = OrderItem.find_by(params[:order_id])
   end
 
   def index
     @orders = current_customer.orders.all
   end
-
 
   def confilm
     @order = Order.new(order_params)
@@ -59,6 +60,10 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.orders.new(order_params)
     @order.shipping_cost = 800
     @order.order_status = "waiting_deposit"
+    @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum,item| sum + item.sum_price }
+    @order.total_payment = (@total+ @order.shipping_cost)
+
     if @order.save
       cart_items.each do |cart|
         order_item = OrderItem.new
