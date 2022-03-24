@@ -1,6 +1,10 @@
 ja:
   enums:
-    order:
-      customer_status:
-        withdrawal: "退会"
-        valid: "有効"
+    item:
+      is_status:
+        sale: "販売中"
+        closed: "販売停止中"
+  activerecord:
+  errors:
+    messages:
+      record_invalid: "バリデーションに失敗しました: %{errors}"

@@ -1,11 +1,14 @@
 <div class="container pt-5 px-sm-0">
   <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
+    <div class="md-3">
       <h3>商品一覧</h3>
+    </div>
+    <div class ="col-md-9 text-right">
+      <%= link_to "+", new_admin_item_path, class: "btn btn-outline-dark rounded-circle" %>
     </div>
   </div>
   <div class="row">
-    <table class="table table-hover table-bordered">
+    <table class="table table-hover table-bordered mt-5">
         <thead>
           <tr>
             <th>商品ID</th>
@@ -25,15 +28,16 @@
                 <% end %>
               </td>
               <td>
-                <%= item.price %>
+                <%= item.price %>円
               </td>
               <td>
                 <%= item.genre.name %>
               </td>
               <td>
-                <% if item.is_status? %>
-                  <span class="label label-success">販売中</span>
-                  <span class="label label-secondary">販売停止中</span>
+                <% if item.is_status == "sale" %>
+                  <span class="text text-success">販売中</span>
+                <% else %>
+                  <span class="text text-muted">販売停止中</span>
                 <% end %>
               </td>
             </tr>
