@@ -16,7 +16,10 @@
             </tr>
             <tr></tr>
               <td class="table-light"><h5 class=p-2>配送先</h5></td>
-              <td><%= @order.address%></td>
+              <td>
+                  <%= @order.post_code%><br>
+                  <%= @order.address%>
+              </td>
             </tr>
             <tr>
               <td class="table-light"><h5 class=p-2>支払い方法</h5></td>

@@ -33,7 +33,7 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <td class="table-light"><h5 class=p-2>料</h5></td>
+            <td class="table-light"><h5 class=p-2>配送料</h5></td>
             <td><%= @shipping_cost %></td>
           </tr>
           <tr></tr>
@@ -60,6 +60,7 @@
     <div class="row">
        <h5><span class="header">お届け先</span></h5>
         <div class="col">
+          <%= @order.post_code %></br>
           <%= @order.address %>
         <br>
           <%= @order.name %>
