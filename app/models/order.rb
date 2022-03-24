@@ -15,5 +15,8 @@ class Order < ApplicationRecord
     self.last_name + " " + self.first_name
   end
 
+  def with_tax_price
+    (price*1.1).floor
+  end
 
 end
