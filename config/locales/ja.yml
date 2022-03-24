@@ -9,5 +9,12 @@ ja:
         waiting_deposit: "入金待ち"
         confirm_deposit:  "入金確認"
         in_production: "製作中"
-        in_production: "発送準備中"
-        in_production: "発送済み"
+        ready_ship: "発送準備中"
+        complete_ship: "発送済み"
+
+      order_items:
+         making_status:
+          before: "着手不可"
+          wait: "製作待ち"
+          make: "製作中"
+          finish: "製作完了"
