@@ -21,5 +21,4 @@ class Customer < ApplicationRecord
     self.family_name + " " + self.first_name
   end
 
-
 end

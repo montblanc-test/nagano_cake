@@ -26,9 +26,9 @@
             <p class="h5"><%= @item.introduction %></p><br>
             <p class>¥<span class="h3 font-weight-bold"><%= ((@item.price)*1.1).floor %></span> </p>
               <% if @item.is_status == true %>
-              <p class = "text-danger">売り切れ</p>
-              <% elsif @item.is_status == false %>
-              <p class = "text-success"> 販売中</p>
+              <p class = "text-success">販売中</p>
+              <% else  %>
+              <p class = "text-danger"> 売り切れ</p>
               <% end %>
               <!--売り切れだったらフォーム消す-->
                 <% if @item.is_status == false %>

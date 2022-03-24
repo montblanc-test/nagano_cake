@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   validates :name, presence:true
   validates :introduction, presence:true
   validates :price, presence:true
-
+  #validates :is_status, presence:true
 
   def get_item_image(width, height)
     unless item_image.attached?
@@ -20,7 +20,14 @@ class Item < ApplicationRecord
   end
 
   def with_tax_price
-    (price*1.1).floor
+    (price*1.1).floor.round.to_s(:delimited)
   end
 
+  def with_price
+    (price).floor.round.to_s(:delimited)
+  end
+
+  #enum is_status: {closed: false, sale: true}
+
 end
+
