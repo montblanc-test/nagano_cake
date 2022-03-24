@@ -6,14 +6,12 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_item = OrderItem.find_by(params[:order_id])
+    # @order_item = OrderItem.find_by(params[:order_id])
   end
 
   def index
-    @orders = Order.all
-    @order_items = OrderItem.all
+    @orders = current_customer.orders.all
   end
-
 
   def confilm
     @order = Order.new(order_params)
