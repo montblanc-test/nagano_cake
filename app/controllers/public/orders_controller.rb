@@ -17,10 +17,8 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     if params[:order][:payment_method] == "credit_card"
       @order.payment_method = "credit_card"
-    elsif params[:order][:payment_method] == "transfer"
-      @order.payment_method = "transfer"
     else
-      render :new
+      @order.payment_method = "transfer"
     end
 
     if params[:order][:address_number] == "1"
