@@ -66,12 +66,14 @@
             </tr>
           </thead>
         <tbody>
+          <% @order.order_items.each do |order_item| %>
           <tr>
-            <td><%= @order_item.item.name %></td>
-            <td><%= (@order_item.price*1.1).floor%></td>
-            <td><%= @order_item.quantity %></td>
-            <td><%= ((@order_item.price*1.1).floor)*(@order_item.quantity)%></td>
+            <td><%= order_item.item.name %></td>
+            <td><%= (order_item.price*1.1).floor%></td>
+            <td><%= order_item.quantity %></td>
+            <td><%= ((order_item.price*1.1).floor)*(order_item.quantity)%></td>
           </tr>
+          <% end %>
         </tbody>
         </table>
       </div>
