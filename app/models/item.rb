@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   validates :name, presence:true
   validates :introduction, presence:true
   validates :price, presence:true
-  validates :is_status, presence:true
+  #validates :is_status, presence:true
 
 
   def get_item_image(width, height)
@@ -28,7 +28,7 @@ class Item < ApplicationRecord
     (price).floor.round.to_s(:delimited)
   end
 
-  enum is_status: {closed: false, sale: true}
+  #enum is_status: {closed: false, sale: true}
 
 end
 

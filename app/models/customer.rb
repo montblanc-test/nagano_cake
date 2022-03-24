@@ -17,8 +17,6 @@ class Customer < ApplicationRecord
   validates :telephone_number, presence: true
   validates :email, presence: true
 
-  enum is_deleted: {withdrawl: false, valid: true}
-
   def full_name
     self.family_name + " " + self.first_name
   end

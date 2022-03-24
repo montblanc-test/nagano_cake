@@ -34,7 +34,7 @@
                 <%= item.genre.name %>
               </td>
               <td>
-                <% if item.is_status == "sale" %>
+                <% if item.is_status == true %>
                   <span class="text text-success">販売中</span>
                 <% else %>
                   <span class="text text-muted">販売停止中</span>

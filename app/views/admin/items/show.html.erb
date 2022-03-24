@@ -33,7 +33,12 @@
         <tr>
           <td><label>販売ステータス</label></td>
           <td>
-            <%= @item.is_status_i18n %>
+            <% if @item.is_status == true %>
+              <span class="text text-success">販売中</span>
+            <% else %>
+              <span class="text text-muted">販売停止中</span>
+            <% end %>
+          </td>
         </tr>
       </tbody>
     </table>
