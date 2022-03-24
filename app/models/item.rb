@@ -9,9 +9,6 @@ class Item < ApplicationRecord
   validates :name, presence:true
   validates :introduction, presence:true
   validates :price, presence:true
-  validates :is_status, presence:true
-
-  # enum is_status:{impossible:true, possible:false}
 
 
   def get_item_image(width, height)
