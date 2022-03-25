@@ -25,26 +25,28 @@
             <p class="h3"><span class ="bg-light font-weight-bold"><%= @item.name %></p></span>
             <p class="h5"><%= @item.introduction %></p><br>
             <p class>¥<span class="h3 font-weight-bold"><%= ((@item.price)*1.1).floor %></span> </p>
-              <% if @item.is_status ==  false %>
+              <% if @item.is_status ==true %>
               <p class = "text-success">販売中</p>
               <% else  %>
               <p class = "text-danger"> 売り切れ</p>
               <% end %>
-              <!--売り切れだったらフォーム消す-->
-                <% if @item.is_status == false %>
-                  <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
-                    <%=  f.hidden_field :customer_id ,value: @customer.id %>
-                    <%=  f.hidden_field :item_id ,value: @item.id %>
-                    <p class>数量を選択してください。</p>
-                    <%= f.select :quantity,[1,2,3,4,5,6,7,8,9,10] %>
-                    <%= f.submit 'カートに入れる',class: "btn btn-success"%>
+             <!--ログインしてない場合以下非表示-->
+                 <% if customer_signed_in? %>
+                    <% if @item.is_status == true %> <!--売り切れだったらフォーム消す 売り切れfalse-->
+                      <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+                          <%=  f.hidden_field :customer_id ,value: @customer.id %>
+                          <%=  f.hidden_field :item_id ,value: @item.id %>
+                          <p class>数量を選択してください。</p>
+                          <%= f.select :quantity,[1,2,3,4,5,6,7,8,9,10] %>
+                          <%= f.submit 'カートに入れる',class: "btn btn-success"%>
+                       <% end %>
+                    <% else %>
+                      <div class><%= link_to "商品一覧に戻る",items_path,class: "btn btn-primary" %></div>
+                    <% end %>
+                  <% else %>
+                       <div class><%= link_to "商品一覧に戻る",items_path,class: "btn btn-primary" %></div>
                   <% end %>
-                <% end %>
-                <%if @item.is_status ==  true %>
-                  <p class>またのご注文をお待ちしております。</p>
-                  <div class><%= link_to "買い物を続ける",items_path,class: "btn btn-primary" %></div>
-                <% end %>
-            </div>
+
           </div>
         </div>
       </div>
