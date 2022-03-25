@@ -7,10 +7,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Genre.create!(name:"ケーキ")
-Genre.create!(name:"焼き菓子")
-Genre.create!(name:"プリン")
-Genre.create!(name:"キャンディ")
+# Genre.create!(name:"ケーキ")
+# Genre.create!(name:"焼き菓子")
+# Genre.create!(name:"プリン")
+# Genre.create!(name:"キャンディ")
 
 # # item = Item.create!(genre_id:1,name:"いちごのショートケーキ",introduction:"最高級のいちごを用いたショートケーキです。",is_status:1,price:1000)
 # item.item_image.attach(io: File.open(Rails.root.join('app/assets/images/cake1.jpeg')),filename: 'cake1.jpeg')
@@ -28,14 +28,14 @@ Genre.create!(name:"キャンディ")
 # item.item_image.attach(io: File.open(Rails.root.join('app/assets/images/candy1.jpeg')),filename: 'candy1.jpeg')
 # item = Item.create!(genre_id:4,name:"バナナのキャンディ",introduction:"最高級のバナナを用いたキャンディです。",is_status:1,price:200 )
 
-  Item.create!(genre_id:1,name:"いちごのショートケーキ",introduction:"最高級のいちごを用いたショートケーキです。",is_status:1,price:1000)
-  Item.create!(genre_id:1,name:"バナナケーキ",introduction:"最高級のバナナを用いたショートケーキです。",is_status:1,price:800 )
-  Item.create!(genre_id:2,name:"いちごのタルト",introduction:"最高級のいちごを用いたタルトです。",is_status:1,price:500 )
-  Item.create!(genre_id:2,name:"バナナのタルト",introduction:"最高級のバナナを用いたタルトです。",is_status:1,price:500 )
-  Item.create!(genre_id:3,name:"いちごのプリン",introduction:"最高級のバナナを用いたタルトです。",is_status:1,price:300 )
-  Item.create!(genre_id:3,name:"バナナのプリン",introduction:"最高級のバナナを用いたプリンです。",is_status:1,price:300 )
-  Item.create!(genre_id:4,name:"いちごのキャンディ",introduction:"最高級のいちごを用いたキャンディです。",is_status:1,price:200 )
-  Item.create!(genre_id:4,name:"バナナのキャンディ",introduction:"最高級のバナナを用いたキャンディです。",is_status:1,price:200 )
+  # Item.create!(genre_id:1,name:"いちごのショートケーキ",introduction:"最高級のいちごを用いたショートケーキです。",is_status:1,price:1000)
+  # Item.create!(genre_id:1,name:"バナナケーキ",introduction:"最高級のバナナを用いたショートケーキです。",is_status:1,price:800 )
+  # Item.create!(genre_id:2,name:"いちごのタルト",introduction:"最高級のいちごを用いたタルトです。",is_status:1,price:500 )
+  # Item.create!(genre_id:2,name:"バナナのタルト",introduction:"最高級のバナナを用いたタルトです。",is_status:1,price:500 )
+  # Item.create!(genre_id:3,name:"いちごのプリン",introduction:"最高級のバナナを用いたタルトです。",is_status:1,price:300 )
+  # Item.create!(genre_id:3,name:"バナナのプリン",introduction:"最高級のバナナを用いたプリンです。",is_status:1,price:300 )
+  # Item.create!(genre_id:4,name:"いちごのキャンディ",introduction:"最高級のいちごを用いたキャンディです。",is_status:1,price:200 )
+  # Item.create!(genre_id:4,name:"バナナのキャンディ",introduction:"最高級のバナナを用いたキャンディです。",is_status:1,price:200 )
 
 
 
