@@ -20,7 +20,7 @@
             <% @All_price = 0 %>
             <% @cart_items.each do |cart_item|  %>
             <tr>
-              <td class="text-left"><%= image_tag cart_item.item.get_item_image(50,50),%><%= cart_item.item.name %></td>
+              <td class="text-left"><%= image_tag cart_item.item.get_item_image(50,50)%><%= cart_item.item.name %></td>
               <td class="text-left"><%= cart_item.item.with_tax_price %></td>
               <td class="text-left">
                 <%= form_with model: cart_item, url: cart_item_path(cart_item),local: true do |f|%>
