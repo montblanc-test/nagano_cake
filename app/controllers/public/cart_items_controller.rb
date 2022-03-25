@@ -1,5 +1,7 @@
 class Public::CartItemsController < ApplicationController
 
+  # before_action :customer_state, only: [:create]
+
   def index
     @cart_items = current_customer.cart_items.all
   # @total = @cart_items.inject(0) { |sum, item| sum + subtotal }
@@ -40,6 +42,15 @@ class Public::CartItemsController < ApplicationController
   def cart_params
     params.require(:cart_item).permit(:quantity,:item_id,:customer_id)
   end
+
+  # def customer_state
+  #   @customer = Customer.find_by(email:params[:customer][:email])
+  #   return if !@customer
+  #   if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted == true
+  #     flash[:notice] = "退会済みの為、再登録が必要です。"
+  #     redirect_to new_customer_registration_path
+  #   end
+  # end
 
 
 end
