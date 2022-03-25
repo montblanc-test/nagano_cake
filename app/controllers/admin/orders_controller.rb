@@ -9,7 +9,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_items = @order.order_items
    if @order.update(order_params)
-    if params[:order][:order_status] == "payment_confirmation"
+    if params[:order][:order_status] == "confirm_deposit"
      @order_items.each do |order_item|
        order_item.making_status = "wait"
        order_item.save

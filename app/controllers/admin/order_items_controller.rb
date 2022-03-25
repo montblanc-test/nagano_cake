@@ -2,7 +2,7 @@ class Admin::OrderItemsController < ApplicationController
   def update
     @order_item = OrderItem.find(params[:id])
     if @order_item.update(order_item_params)
-      if params[:order_item][:making_status] == "in_production"
+      if params[:order_item][:making_status] == "make"
         @order_item.order.order_status = "in_production"
         @order_item.order.save
       elsif @order_item.order.order_items.count == @order_item.order.order_items.where(making_status: "finish").count
