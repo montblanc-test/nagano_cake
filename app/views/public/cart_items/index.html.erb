@@ -28,7 +28,7 @@
                 <%= f.submit '変更',class: "btn btn-success"%>
                 <% end %>
               </td>
-              <td class="text-left"><%= cart_item.subtotal %></td>
+              <td class="text-left"><%= cart_item.subtotal.to_s(:delimited) %></td>
               <td class="text-left"><%= link_to "削除する",cart_item_path(cart_item), method: :delete,data: {confirm: "本当に消しますか？"}, class: "btn btn-danger" %></td>
             </tr>
             <% @All_price += cart_item.subtotal %>
@@ -43,7 +43,7 @@
           <table class="table table-bordered ">
             <thead>
               <th bgcolor="#f5f5f5">合計金額(税込)</th>
-              <th class><%= @All_price %>円 </th>
+              <th class><%= @All_price.to_s(:delimited) %>円 </th>
             </thead>
           </table>
         </div>
