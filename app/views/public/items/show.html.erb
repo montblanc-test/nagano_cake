@@ -25,7 +25,7 @@
             <p class="h3"><span class ="bg-light font-weight-bold"><%= @item.name %></p></span>
             <p class="h5"><%= @item.introduction %></p><br>
             <p class>¥<span class="h3 font-weight-bold"><%= ((@item.price)*1.1).floor %></span> </p>
-              <% if @item.is_status == true %>
+              <% if @item.is_status ==  false %>
               <p class = "text-success">販売中</p>
               <% else  %>
               <p class = "text-danger"> 売り切れ</p>
@@ -40,8 +40,9 @@
                     <%= f.submit 'カートに入れる',class: "btn btn-success"%>
                   <% end %>
                 <% end %>
-                <%if @item.is_status == true %>
+                <%if @item.is_status ==  true %>
                   <p class>またのご注文をお待ちしております。</p>
+                  <div class><%= link_to "買い物を続ける",items_path,class: "btn btn-primary" %></div>
                 <% end %>
             </div>
           </div>
