@@ -25,10 +25,10 @@
             </td>
             <td><%= customer.email %></td>
             <td>
-              <% if customer.is_deleted == false %>
-                <span class="label label-success">有効</span>
-              <% else %>
+              <% if customer.is_deleted == true %>
                 <span class="label label-secondary">退会</span>
+              <% else %>
+                <span class="label label-success">有効</span>
               <% end %>
             </td>
           </tr>
