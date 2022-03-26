@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_18_011102) do
+ActiveRecord::Schema.define(version: 2022_03_21_055042) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2022_03_18_011102) do
     t.string "post_code"
     t.string "address"
     t.string "telephone_number"
-    t.boolean "is_deleted"
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2022_03_18_011102) do
     t.string "name"
     t.text "introduction"
     t.integer "price"
-    t.boolean "is_status"
+    t.boolean "is_status", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2022_03_18_011102) do
     t.integer "order_id"
     t.integer "item_id"
     t.integer "quantity"
-    t.integer "making_status"
+    t.integer "making_status", default: 0, null: false
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
